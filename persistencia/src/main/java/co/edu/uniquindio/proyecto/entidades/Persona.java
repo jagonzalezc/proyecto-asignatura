@@ -1,73 +1,33 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import lombok.*;
+
+import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
+import java.util.List;
+import java.util.Map;
 
 @Entity
-
+@Getter
+@Setter
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@AllArgsConstructor
+@ToString
 public class Persona implements Serializable{
 
     @Id
+    @EqualsAndHashCode.Include
     private String cedula;
     private String nombre;
     private String email;
-    private String telefono;
+    @ElementCollection
+    private List<String> telefono;
+    @ElementCollection
+    private Map<String, String> direccion;
+    @Enumerated(EnumType.STRING)
+    private GeneroPersona generoPersona;
 
     public Persona(){
         super();
-    }
-
-    public Persona(String cedula, String nombre, String email, String telefono) {
-        this.cedula = cedula;
-        this.nombre = nombre;
-        this.email = email;
-        this.telefono = telefono;
-    }
-
-    public String getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(String cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Persona persona = (Persona) o;
-        return Objects.equals(cedula, persona.cedula);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(cedula);
     }
 }
