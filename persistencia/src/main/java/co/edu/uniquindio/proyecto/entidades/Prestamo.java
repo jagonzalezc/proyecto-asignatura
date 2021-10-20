@@ -2,12 +2,10 @@ package co.edu.uniquindio.proyecto.entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -22,5 +20,12 @@ public class Prestamo implements Serializable {
     private Integer codigo;
     private LocalDate fechaPrestamo;
     private LocalDate fechaDevolucion;
+
+    @ManyToOne
+    @JoinColumn(nullable = false)
+    private Usuario usuarioPrestamo;
+    @ManyToMany
+    @JoinColumn(nullable = false)
+    private List<Libro> libros;
 
 }

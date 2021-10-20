@@ -5,24 +5,24 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-public class CIudad implements Serializable {
+public class Ciudad implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
     private String nombre;
+    @OneToMany (mappedBy = "ciudad")
+    private List<Usuario> usuarios;
 
-    public CIudad(String nombre) {
+    public Ciudad(String nombre) {
         this.nombre = nombre;
     }
 }

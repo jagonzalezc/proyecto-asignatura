@@ -1,7 +1,11 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 public enum GeneroLibro {
-    ROMANTICO,
+    TERROR,
+    CIENCIA,
+    HISTORIA,
     CIENCIAFITCION,
-    TERROR
+    DRAMA,
+    COMEDIA,
+    ANIME
 }

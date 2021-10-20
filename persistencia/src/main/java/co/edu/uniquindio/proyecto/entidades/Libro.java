@@ -2,11 +2,9 @@ package co.edu.uniquindio.proyecto.entidades;
 
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Getter
@@ -16,12 +14,17 @@ import java.io.Serializable;
 @ToString
 public class Libro implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    private Integer codigo;
+    @Column(length = 10)
+    private String isbn;
     private String nombre;
     private Integer unidades;
     private Integer anio;
+    @ManyToMany(mappedBy = "libros")
+    private List<Prestamo> prestamos;
+    @ManyToMany
+    @JoinColumn(nullable = false)
+    private List<Autor> autores;
 
     public Libro(String nombre, Integer anio) {
         this.nombre = nombre;
