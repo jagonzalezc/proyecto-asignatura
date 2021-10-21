@@ -13,6 +13,7 @@ import java.time.LocalDate;
 @ToString
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 @MappedSuperclass
+@AllArgsConstructor
 public class Persona implements Serializable {
     @Id
     @EqualsAndHashCode.Include
