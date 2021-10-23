@@ -23,6 +23,8 @@ public class Persona implements Serializable {
     private String nombre;
     @Column(nullable = false)
     private LocalDate fechaNacimiento;
-    @Enumerated(EnumType.STRING)
-    private GeneroPersona generoPersona;
+    private String password;
+
+    public Persona(String codigo, String nombre, LocalDate fechaNacimiento) {
+    }
 }

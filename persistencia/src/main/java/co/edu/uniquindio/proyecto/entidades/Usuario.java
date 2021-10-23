@@ -21,22 +21,31 @@ public class Usuario extends Persona implements Serializable{
     private List<String> telefono;
     @ElementCollection
     private Map<String, String> direccion;
+    @ManyToMany
+    @JoinColumn(nullable = false)
+    @ToString.Exclude
+    private List<Producto> productos;
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Ciudad ciudad;
-    @OneToMany (mappedBy = "usuarioPrestamo")
-    @ToString.Exclude
-    private List<Prestamo> prestamos;
+    private Ciudad ciudadUsuario;
+    @OneToMany (mappedBy = "usuarioComentario")
+    private List<Comentario> comentarios;
+    @OneToMany (mappedBy = "usuarioCompra")
+    private List<Compra> compras;
+    @OneToMany (mappedBy = "chatUsuario")
+    private List<Chat> chats;
+    @OneToMany (mappedBy = "usuarioSubastaUsuario")
+    private List<SubastaUsuario> subastasUsuarios;
 
     public Usuario(){
         super();
     }
 
-    public Usuario(String codigo, String nombre, LocalDate fechaNacimiento, GeneroPersona generoPersona, String email, List<String> telefono, Map<String, String> direccion, Ciudad ciudad) {
-        super(codigo, nombre, fechaNacimiento, generoPersona);
+    public Usuario(String codigo, String nombre, LocalDate fechaNacimiento,  String email, List<String> telefono, Map<String, String> direccion) {
+        super(codigo, nombre, fechaNacimiento);
         this.email = email;
         this.telefono = telefono;
         this.direccion = direccion;
-        this.ciudad = ciudad;
+
     }
 }

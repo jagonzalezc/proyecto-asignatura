@@ -1,5 +1,7 @@
 package co.edu.uniquindio.proyecto.entidades;
 
+import co.edu.uniquindio.proyecto.entidades.Producto;
+import co.edu.uniquindio.proyecto.entidades.Usuario;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,20 +14,21 @@ import java.util.List;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
-@ToString
-public class Prestamo implements Serializable {
+public class Comentario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @EqualsAndHashCode.Include
     private Integer codigo;
-    private LocalDate fechaPrestamo;
-    private LocalDate fechaDevolucion;
-
+    private String mensaje;
+    private String respuesta;
+    @Column(nullable = false)
+    private LocalDate fechaComentario;
+    private Integer calificacion;
     @ManyToOne
     @JoinColumn(nullable = false)
-    private Usuario usuarioPrestamo;
-    @ManyToMany
+    private Producto productoComentario;
+    @ManyToOne
     @JoinColumn(nullable = false)
-    private List<Libro> libros;
+    private Usuario usuarioComentario;
+
 
 }

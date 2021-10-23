@@ -42,7 +42,7 @@ public class UsuarioTest {
         List<String> telefonos = new ArrayList<>();
         telefonos.add("3226646612");
         telefonos.add("6067321789");
-        Usuario usuarioPrueba = new Usuario("111","Juanito", LocalDate.now(), GeneroPersona.MASCULINO, "juan@mail.com", telefonos, direcciones, ciudad );
+        Usuario usuarioPrueba = new Usuario("111","Juanito", LocalDate.now(),  "juan@mail.com", telefonos, direcciones );
 
         //Guardar el registro
         Usuario guardado = usuarioRepo.save(usuarioPrueba);
@@ -66,7 +66,7 @@ public class UsuarioTest {
             List<String> telefonos = new ArrayList<>();
             telefonos.add("3226646612");
             telefonos.add("6067321789");
-            Usuario usuarioPrueba = new Usuario("111","Juanito", LocalDate.now(), GeneroPersona.MASCULINO, "juan@mail.com", telefonos, direcciones, ciudad);
+            Usuario usuarioPrueba = new Usuario("111","Juanito", LocalDate.now(),  "juan@mail.com", telefonos, direcciones);
             //Guardamos el registro
             usuarioRepo.save(usuarioPrueba);
            //Luego lo eliminamos
@@ -92,7 +92,7 @@ public class UsuarioTest {
             List<String> telefonos = new ArrayList<>();
             telefonos.add("3226646612");
             telefonos.add("6067321789");
-            Usuario usuarioPrueba = new Usuario("111","Juanito", LocalDate.now(), GeneroPersona.MASCULINO, "juan@mail.com", telefonos, direcciones, ciudad );
+            Usuario usuarioPrueba = new Usuario("111","Juanito", LocalDate.now(),  "juan@mail.com", telefonos, direcciones );
             //Guardamos el registro
             Usuario guardado = usuarioRepo.save(usuarioPrueba );
             //Modificamos el nombre
@@ -111,7 +111,7 @@ public class UsuarioTest {
         //Obtenemos la lista de todos los usuarios
         List<Usuario> listaUsuarios = usuarioRepo.findAll();
         //Imprimimos la lista
-        listaUsuarios.forEach(usuario -> System.out.println("u"));
+        listaUsuarios.forEach(usuario -> System.out.println(usuario));
         Assertions.assertEquals(2, listaUsuarios.size());
     }
 

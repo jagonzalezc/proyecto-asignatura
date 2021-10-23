@@ -1,9 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -19,8 +16,11 @@ public class Ciudad implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer codigo;
     private String nombre;
-    @OneToMany (mappedBy = "ciudad")
+    @OneToMany (mappedBy = "ciudadUsuario")
     private List<Usuario> usuarios;
+    @OneToMany (mappedBy = "ciudadProducto")
+    @ToString.Exclude
+    private List<Producto> productos;
 
     public Ciudad(String nombre) {
         this.nombre = nombre;

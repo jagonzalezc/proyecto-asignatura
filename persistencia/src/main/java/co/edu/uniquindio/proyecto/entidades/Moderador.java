@@ -1,7 +1,6 @@
 package co.edu.uniquindio.proyecto.entidades;
 
 import lombok.*;
-import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
 import javax.validation.constraints.Max;
@@ -14,13 +13,14 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @ToString
-public class Autor extends Persona implements Serializable{
+public class Moderador extends Persona implements Serializable{
 
     @Positive
     @Max(9999)
     @Column(nullable = false)
-    private Integer anioNacimiento;
-    @ManyToMany(mappedBy = "autores")
-    private List<Libro> libros;
+    private Integer reputacion;
+    @OneToMany (mappedBy = "moderadorEstimacion")
+    private List<Estimacion> estimaciones;
+
 
 }
